@@ -1,3 +1,8 @@
+@font-face {
+    font-family: Spin-Cycle;
+    src: url(SPINC___.TTF);
+  }
+
 *{
     margin: 0;
 }
@@ -30,30 +35,38 @@
 }
 
 .logo-container{
+    margin: 0px 0px -10px;
     flex: 2;
 }
 
 .logo{
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Spin-Cycle;
 }
 
 .menu-container{
+    margin: 0px 0px -10px;
     flex: 3;
-    cursor: pointer;
+    
 }
 
 .menu-list{
     display: flex;
     list-style: none;   
     font-size: 20px;
-}
-
-.menu-list{
+    cursor: pointer;
     margin-right: 200px;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Spin-Cycle;
 }
 
 .left-menu-icon{
     color: white;
     font-size: 20px;
+}
+
+.background-color{
+    background-image: url('background-gradient.jpg');
+    background-size: cover;
+    display: flex;
+    height: 919px;
+    background-repeat: no-repeat;
 }

@@ -1,5 +1,5 @@
 import './Menu.css';
-export const Menu = () => {
+export const Menu = (props) => {
     return (
         <div>
             <div className="navbar">
@@ -22,6 +22,7 @@ export const Menu = () => {
         <i className="left-menu-icon fa-solid fa-user"></i>
         <i className="left-menu-icon fa-solid fa-bookmark"></i>
     </div>
+    {props.children}
     </div>
     )
 }

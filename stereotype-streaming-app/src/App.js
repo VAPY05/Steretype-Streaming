@@ -5,7 +5,10 @@ import {Menu} from '../src/Components/Menu/Menu'
 function App() {
   return (
     <div className="App">
-      <Menu />
+      <Menu>
+        <div className='background-color'>
+        </div>
+      </Menu>
     </div>
   );
 }
