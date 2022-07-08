@@ -1,4 +1,9 @@
 import './Menu.css';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {faHome, faTv, faUser, faBookmark, faMagnifyingGlass} from "@fortawesome/free-solid-svg-icons"
+
+
 export const Menu = (props) => {
     return (
         <div>
@@ -16,11 +21,11 @@ export const Menu = (props) => {
                 </div>
             </div>
     <div className="sidebar">
-        <i className="left-menu-icon fa-solid fa-magnifying-glass"></i>
-        <i className="left-menu-icon fa-solid fa-tv"></i>
-        <i className="left-menu-icon fa-solid fa-home"></i>
-        <i className="left-menu-icon fa-solid fa-user"></i>
-        <i className="left-menu-icon fa-solid fa-bookmark"></i>
+        <FontAwesomeIcon icon={faMagnifyingGlass} className="left-menu-icon"/>
+        <FontAwesomeIcon icon={faTv} className="left-menu-icon"/>
+        <FontAwesomeIcon icon={faHome} className="left-menu-icon"/>
+        <FontAwesomeIcon icon={faUser} className="left-menu-icon"/>
+        <FontAwesomeIcon icon={faBookmark} className="left-menu-icon"/>
     </div>
     {props.children}
     </div>

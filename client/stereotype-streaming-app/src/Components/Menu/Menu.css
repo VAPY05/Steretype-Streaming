@@ -61,12 +61,6 @@
 .left-menu-icon{
     color: white;
     font-size: 20px;
-}
+    cursor: pointer;
 
-.background-color{
-    background-image: url('background-gradient.jpg');
-    background-size: cover;
-    display: flex;
-    height: 919px;
-    background-repeat: no-repeat;
 }
