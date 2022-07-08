@@ -1,4 +1,5 @@
 import './App.css';
+
 import {Menu} from '../src/Components/Menu/Menu'
 
 function App() {
@@ -6,7 +7,6 @@ function App() {
     <div className="App">
       <Menu>
         <div className='main'>
-          
         </div>
       </Menu>
     </div>
