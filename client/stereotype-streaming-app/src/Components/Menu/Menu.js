@@ -14,7 +14,7 @@ export const Menu = (props) => {
                     <ul className="menu-list">
                         <li className="menu-list item">Home</li>
                         <li className="menu-list item">Movies</li>
-                        <li className="menu-list item">Series</li>
+                        <li className="menu-list item">New</li>
                         <li className="menu-list item">Popular</li>
                     </ul>
                 </div>
@@ -27,7 +27,6 @@ export const Menu = (props) => {
         <FontAwesomeIcon icon={faUser} className="left-menu-icon"/>
         <FontAwesomeIcon icon={faBookmark} className="left-menu-icon"/>
     </div>
-    {props.children}
     </div>
     )
 }
