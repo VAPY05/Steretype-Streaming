@@ -1365,6 +1365,14 @@
                 "name": "Coco",
                 "img": "https://www.themoviedb.org/t/p/original/gGEsBPAijhVUFoiNpgZXqRVWJt2.jpg"
             },
+            "movie_7": {
+                "name": "Soul",
+                "img": "https://m.media-amazon.com/images/M/MV5BZGE1MDg5M2MtNTkyZS00MTY5LTg1YzUtZTlhZmM1Y2EwNmFmXkEyXkFqcGdeQXVyNjA3OTI0MDc@._V1_.jpg"
+            },
+            "movie_8": {
+                "name": "Cars",
+                "img": "https://static.posters.cz/image/750/posters/cars-one-sheet-i1253.jpg"
+            },
         },
 
 

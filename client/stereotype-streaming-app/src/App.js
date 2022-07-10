@@ -5,7 +5,7 @@ import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import {Menu} from '../src/Components/Menu/Menu'
 import {Search} from '../src/Components/Search/Search'
 
-import {MovieList} from '../src/Components/Movies/Movies'
+import {MovieList} from '../src/Components/Movies/Movies copy'
 import { NotFound } from './Components/404/404';
 
 function App() {
