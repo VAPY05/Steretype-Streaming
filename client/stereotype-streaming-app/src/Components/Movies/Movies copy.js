@@ -19,11 +19,7 @@ export const MovieList = () => {
             })
     }, []);
 
-    function clickHandler(name) {
-        console.log(name)
-    }
-
-    const movies = movie.map((x) => <MovieItem key={x._id} img={x.img} title={x.name} click={clickHandler} />)
+    let movies = movie.map((x) => <MovieItem key={x._id} img={x.img} title={x.name}/>)
 
     const responsive = {
         superLargeDesktop: {
