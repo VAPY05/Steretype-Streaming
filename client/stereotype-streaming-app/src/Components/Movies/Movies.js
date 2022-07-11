@@ -1,24 +1,29 @@
 import './Movies.css';
 
-import { MovieItem } from './Movie.item';
 import { useState, useEffect } from 'react';
 
-import Carousel from 'react-multi-carousel';
-import 'react-multi-carousel/lib/styles.css';
+import { MovieItem } from './Movie.item';
+import {SliderWithMovies} from "../SliderWithMovies/SliderWithMovies"
+import { Loading } from '../Loading/Loading';
+
 
 export const MovieList = () => {
 
     const [movie, setMovie] = useState([]);
+    const [isActive, setIsActive] = useState(false);
 
     useEffect(() => {
         fetch('http://localhost:3030/data/movies')
             .then(res => res.json())
             .then(result => {
                 setMovie(movie => result)
+                setIsActive(true)
             })
     }, []);
 
-    let movies = movie.map((x) => <MovieItem key={x._id} img={x.img} title={x.name}/>)
+
+    let movies = movie.map((x) => <MovieItem key={x._id} img={x.img} title={x.name} url={x._id}/>)
+    let reversedMovies = movies.slice(0).reverse()
 
     const responsive = {
         superLargeDesktop: {
@@ -43,14 +48,12 @@ export const MovieList = () => {
 
     return (
         <>
-        <h1 className="movie-list-title">New Releases</h1>
-        <Carousel responsive={responsive} swipeable={false} draggable={false} autoPlay={true} autoPlaySpeed={2000} infinite={true} transitionDuration={500}>
-            {movies}
-        </Carousel>
-        <h1 className="movie-list-title">Top 5</h1>
-        <Carousel responsive={responsive} swipeable={false} draggable={false} autoPlay={true} autoPlaySpeed={2000} infinite={true}transitionDuration={500}>
-            {movies.sort((a,b)=>b-a)}
-        </Carousel>
+        {!isActive ? <Loading/> : 
+        <>
+        <SliderWithMovies title={"New Releases"} movies={movies} responsive={responsive}/>
+        <SliderWithMovies title={"Movies"} movies={reversedMovies} responsive={responsive}/>
+        </>
+        }
         </>
     )
 }
