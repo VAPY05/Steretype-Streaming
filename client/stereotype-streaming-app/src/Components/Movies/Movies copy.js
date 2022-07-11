@@ -43,14 +43,15 @@ export const MovieList = () => {
 
 
     return (
-        
         <>
         <h1 className="movie-list-title">New Releases</h1>
         <Carousel responsive={responsive} swipeable={false} draggable={false}>
             {movies}
         </Carousel>
+        <h1 className="movie-list-title">Trends</h1>
+        <Carousel responsive={responsive} swipeable={false} draggable={false}>
+            {movies.sort((a,b)=>b-a)}
+        </Carousel>
         </>
-        
-        
     )
 }
