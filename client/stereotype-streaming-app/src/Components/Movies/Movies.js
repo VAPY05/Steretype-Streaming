@@ -44,11 +44,11 @@ export const MovieList = () => {
     return (
         <>
         <h1 className="movie-list-title">New Releases</h1>
-        <Carousel responsive={responsive} swipeable={false} draggable={false}>
+        <Carousel responsive={responsive} swipeable={false} draggable={false} autoPlay={true} autoPlaySpeed={2000} infinite={true} transitionDuration={500}>
             {movies}
         </Carousel>
         <h1 className="movie-list-title">Top 5</h1>
-        <Carousel responsive={responsive} swipeable={false} draggable={false}>
+        <Carousel responsive={responsive} swipeable={false} draggable={false} autoPlay={true} autoPlaySpeed={2000} infinite={true}transitionDuration={500}>
             {movies.sort((a,b)=>b-a)}
         </Carousel>
         </>
