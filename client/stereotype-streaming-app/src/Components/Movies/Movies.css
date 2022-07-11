@@ -26,5 +26,14 @@
 
 .movie-list-title{
     color: white;
-    padding-left: 10px;
+    padding-left: 60px;
+    padding-right: 60px;
+}
+
+.react-multi-carousel-item {
+    flex-direction: column;
+}
+
+.react-multi-carousel-list {
+    margin-left: 80px;
 }

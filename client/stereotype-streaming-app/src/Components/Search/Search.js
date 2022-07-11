@@ -7,7 +7,7 @@ export const Search = () => {
     return (
         <div className="search-box">
             <button className="btn-search">
-                <i class="fas fa-search">
+                <i className="fas fa-search">
                     <FontAwesomeIcon icon={faMagnifyingGlass} className="search"/>
                 </i>
             </button>

@@ -5,7 +5,7 @@ import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import {Menu} from '../src/Components/Menu/Menu'
 import {Search} from '../src/Components/Search/Search'
 
-import {MovieList} from '../src/Components/Movies/Movies copy'
+import {MovieList} from '../src/Components/Movies/Movies'
 import { NotFound } from './Components/404/404';
 
 function App() {
@@ -23,8 +23,8 @@ function App() {
 
   return(
     <div>
-      <Menu/>
     <BrowserRouter>
+      <Menu/>
       <Routes>
         <Route path='/' element={<MovieList/>}></Route>
         <Route path='/search' element={<Search/>}></Route>
