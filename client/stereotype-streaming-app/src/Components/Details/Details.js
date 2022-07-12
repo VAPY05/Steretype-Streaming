@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom"
 import "./Details.css"
 import { Loading } from '../Loading/Loading';
 import { VideoPlayer } from '../Video/VideoPlayer';
+import { Link } from "react-router-dom";
 
 export const Details = (props) => {
 
@@ -36,18 +37,18 @@ export const Details = (props) => {
             <>
                 <div className="movie-panel">
                     <div>
-                        <h1>{movieTitle}</h1>
-                    </div>
-                    <div>
                         <img src={movieImg} width={550} height={800}/>
                     </div>
-                    <div>
-                        <h1>{movieDescription}</h1>
+                    <div className="title-and-desc">
+                        <h1 className="title">{movieTitle}</h1>
+                        <textarea className="desc" value={movieDescription}/>
+                        <div className="buttons">
+                            <Link to={`/movies/${id}/watch`}><button className="play">Play</button></Link>
+                            <button className="like">Like</button>
+                            <button className="remove">Remove</button>
+                        </div>
                     </div>
-                    <div>
-                        <VideoPlayer url={movieUrl}/>
-                    </div>
-                    
+
                 </div>
             </>
             :

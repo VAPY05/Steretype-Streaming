@@ -30,7 +30,8 @@ function App() {
       <Routes>
         <Route path='/' element={<MovieList/>}></Route>
         <Route path='/search' element={<Search/>}></Route>
-        <Route path='/movies/details/:id' element={<Details/>}></Route>
+        <Route path='/movies/:id/details' element={<Details/>}></Route>
+        <Route path='/movies/:id/watch' element={<VideoPlayer/>}></Route>
         <Route path='*' element={<NotFound/>}></Route>
       </Routes>
     </BrowserRouter>
