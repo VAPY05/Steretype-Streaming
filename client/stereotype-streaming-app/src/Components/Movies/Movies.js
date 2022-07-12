@@ -13,7 +13,7 @@ export const MovieList = () => {
     const [isActive, setIsActive] = useState(false);
 
     useEffect(() => {
-        fetch('http://localhost:3030/data/movies')
+        fetch('http://localhost:3030/movies')
             .then(res => res.json())
             .then(result => {
                 setMovie(movie => result)
