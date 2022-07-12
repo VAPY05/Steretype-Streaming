@@ -8,12 +8,13 @@ import {Search} from '../src/Components/Search/Search'
 import {MovieList} from '../src/Components/Movies/Movies'
 import { NotFound } from './Components/404/404';
 import { VideoPlayer } from './Components/Video/VideoPlayer';
+import { Details } from './Components/Details/Details';
 
 function App() {
   /* return (
     <div>
       <Menu>
-        <div className='main'>
+        <div classNameName='main'>
         <MovieList/>
         </div>
       </Menu>
@@ -29,7 +30,7 @@ function App() {
       <Routes>
         <Route path='/' element={<MovieList/>}></Route>
         <Route path='/search' element={<Search/>}></Route>
-        <Route path='/movies/movie_2' element={<VideoPlayer/>}></Route>
+        <Route path='/movies/details/:id' element={<Details/>}></Route>
         <Route path='*' element={<NotFound/>}></Route>
       </Routes>
     </BrowserRouter>
