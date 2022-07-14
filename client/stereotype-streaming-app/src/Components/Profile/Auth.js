@@ -1,4 +1,4 @@
-import "./Profile.css"
+import "./Auth.css"
 
 import { Link } from "react-router-dom"
 

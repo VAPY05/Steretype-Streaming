@@ -9,7 +9,7 @@ import {MovieList} from '../src/Components/Movies/Movies'
 import { NotFound } from './Components/404/404';
 import { VideoPlayer } from './Components/Video/VideoPlayer';
 import { Details } from './Components/Details/Details';
-import { Profile } from './Components/Profile/Profile';
+import { Profile } from './Components/Profile/Auth';
 import {Register} from "./Components/Profile/Register/Register"
 
 function App() {
