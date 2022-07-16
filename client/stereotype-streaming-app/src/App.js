@@ -9,8 +9,9 @@ import {MovieList} from '../src/Components/Movies/Movies'
 import { NotFound } from './Components/404/404';
 import { VideoPlayer } from './Components/Video/VideoPlayer';
 import { Details } from './Components/Details/Details';
-import { Profile } from './Components/Profile/Auth';
-import {Register} from "./Components/Profile/Register/Register"
+import { Profile } from './Components/Profile/Profile';
+import { Login } from './Components/Profile/Login/Login';
+import { Register } from './Components/Profile/Register/Register';
 
 function App() {
   return(
@@ -23,7 +24,8 @@ function App() {
         <Route path='/movies/:id/details' element={<Details/>}></Route>
         <Route path='/movies/:id/watch' element={<VideoPlayer/>}></Route>
         <Route path='/profile' element={<Profile/>}></Route>
-        <Route path='/profile/auth' element={<Register/>}></Route>
+        <Route path='/profile/login' element={<Login/>}></Route>
+        <Route path='/profile/register' element={<Register/>}></Route>
         <Route path='*' element={<NotFound/>}></Route>
       </Routes>
     </BrowserRouter>

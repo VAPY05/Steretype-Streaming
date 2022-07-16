@@ -21,7 +21,6 @@ export const Details = (props) => {
         fetch(`http://localhost:3030/movies/${id}`)
         .then(response => response.json())
         .then(res=>{
-            console.log(res)
             setMovieTitle(res.title)
             setMovieDescription(res.description)
             setMovieUrl(res.url)
@@ -41,7 +40,7 @@ export const Details = (props) => {
                     </div>
                     <div className="title-and-desc">
                         <h1 className="title">{movieTitle}</h1>
-                        <textarea className="desc" value={movieDescription}/>
+                        <textarea className="desc" value={movieDescription} readOnly/>
                         <div className="buttons">
                             <Link to={`/movies/${id}/watch`}><button className="play">Play</button></Link>
                             <button className="like">Like</button>

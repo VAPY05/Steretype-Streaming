@@ -1,8 +1,8 @@
 import {useState} from "react"
 
-import "./Register.css"
+import "./Login.css"
 
-export const Register = () => {
+export const Login = () => {
 
 	const [username, setUsername] = useState('Username')
 	const [password, setPassword] = useState('Password')
@@ -13,7 +13,7 @@ export const Register = () => {
 
     return (
 	<>	
-		<h1>Register</h1>
+		<h1>Login</h1>
 	</>
     )
 }
