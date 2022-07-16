@@ -9,7 +9,7 @@ routes.post('/user/register',async(req,res)=>{
         if(createdProfile){
             res.status(201).json({createdProfile});
         }else{
-            res.status(401).json({message:"Somethis went wrong"});
+            res.status(401).json({message:"Something went wrong"});
         }
 })
 
