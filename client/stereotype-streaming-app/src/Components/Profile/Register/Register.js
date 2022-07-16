@@ -19,7 +19,7 @@ export const Register = () => {
 	<>	
 		<div className="login-page">
 				<div className="form">
-					<form className="login-form">
+					<form className="login-form" onSubmit={(e)=>e.preventDefault()}>
 						<input type="text" placeholder="username" value={username} onChange={(e)=>{setUsername(e.target.value)}}/>
 						<input type="password" placeholder="password" value={password} onChange={(e)=>{setPassword(e.target.value)}}/>
 						<input type="password" placeholder="repeat password" value={repeatedPassword} onChange={(e)=>{setRepeatedPassword(e.target.value)}}/>

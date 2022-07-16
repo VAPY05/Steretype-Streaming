@@ -16,12 +16,14 @@ export const Search = () => {
 
     return (
         <div className="search-box">
+            <form onSubmit={(e)=>{e.preventDefault()}}>
             <button className="btn-search" onClick={searchHandler}>
                 <i className="fas fa-search">
                     <FontAwesomeIcon icon={faMagnifyingGlass} className="search"/>
                 </i>
             </button>
             <input type="text" className="input-search" placeholder="Type to Search..." value={value} onChange={(e)=>{setValue(e.target.value)}}/>
+        </form>
         </div>
 
     )
