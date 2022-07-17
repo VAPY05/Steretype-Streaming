@@ -44,7 +44,7 @@ The application is devided into 4 main modules:
 </p>
 
 The application is devided into 4 main modules:
-### 1. App.js
+### 1. Server.js
   The entry point of the application. It initializes the firebase backend - firebase auth and firestore database, imports dependecies and middlewares, initializes page router, registers routes and starts the application.
 ### 2. Components
   Modules handling the html structure and templates, render logic, stylization and overall presentation.
