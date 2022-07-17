@@ -5,7 +5,6 @@ const {register, login} = require('../services/user')
 routes.post('/user/register',async(req,res)=>{
         const data = req.body
         const createdProfile = await register(data);
-        console.log(createdProfile)
         if(createdProfile){
             res.status(201).json({createdProfile});
         }else{
@@ -16,10 +15,9 @@ routes.post('/user/register',async(req,res)=>{
 routes.post('/user/login',async(req,res)=>{
     const data = req.body
         const obj = await login(data);
-        if(obj[0].isValid){
+        if(obj){
             const profile = obj[0].profile
             const access = obj[1];
-            console.log(access)
             res.status(200).json({access});
         }else{
             res.status(401).json({message:"Not Authorized"});
