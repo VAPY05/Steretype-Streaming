@@ -1,6 +1,6 @@
 
 <p align="center">
-<img src="https://github.com/VAPY05/Steretype-Streaming/blob/main/assets/logo-back-end.png">
+<img src="https://github.com/VAPY05/Steretype-Streaming/blob/main/assets/logo-front-end.png">
 </p>
 <h3 align="center">Service for movie streaming</h3>
 
@@ -24,7 +24,7 @@ Stereotype Streaming is a project that I am creating with passion as Project Def
 ## 🧱 Architecture for the Front-End
 
 <p align="center">
-<img src="https://github.com/VAPY05/Steretype-Streaming/blob/main/assets/logo-back-end.png">
+<img src="https://github.com/VAPY05/Steretype-Streaming/blob/main/assets/logo-front-end.png">
 </p>
 
 The application is devided into 4 main modules:
