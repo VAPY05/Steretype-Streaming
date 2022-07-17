@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 
 export const Profile = () => {
     
-    const user = false
+    const user = localStorage.getItem("user")
     
     return (
         <>

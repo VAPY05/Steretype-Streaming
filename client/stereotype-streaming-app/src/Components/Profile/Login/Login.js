@@ -2,22 +2,35 @@ import { useState } from "react"
 
 import "./Login.css"
 
-import {Link} from "react-router-dom" 
+import {Link, useNavigate} from "react-router-dom" 
 
 export const Login = () => {
 
 	const [username, setUsername] = useState('')
 	const [password, setPassword] = useState('')
 
-	function session() {
+	const navigate = useNavigate();
 
+	function SubmitHandler(e) {
+		e.preventDefault()
+		fetch('http://localhost:3030/user/login',{
+			method: "POST",
+			body: JSON.stringify({username, password}),
+			headers: {
+				"Content-Type": "Application/JSON",
+			},
+		}).then(res=>res.json()).then(response=>{
+			response = response.access
+			localStorage.setItem("user",JSON.stringify(response))
+			navigate('/')
+		})
 	}
 
 	return (
 		<>
 			<div className="login-page">
 				<div className="form">
-					<form className="login-form" onSubmit={(e)=>e.preventDefault()}>
+					<form className="login-form" onSubmit={(e)=>SubmitHandler(e)}>
 						<input type="text" placeholder="username" value={username} onChange={(e)=>{setUsername(e.target.value)}}/>
 						<input type="password" placeholder="password" value={password} onChange={(e)=>{setPassword(e.target.value)}}/>
 						<button>login</button>
