@@ -37,7 +37,7 @@ The application is devided into 4 main modules:
 
 ## 🧱 Architecture for the Back-End
 
-<center>###The Server is also called SWS(Stereotype Web Server)</center>
+### The Server is also called SWS(Stereotype Web Server)
 
 <p align="center">
 <img src="https://github.com/VAPY05/Steretype-Streaming/blob/main/assets/logo-back-end.png">
