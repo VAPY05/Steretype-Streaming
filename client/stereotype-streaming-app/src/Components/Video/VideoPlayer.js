@@ -26,7 +26,7 @@ export const VideoPlayer = (props) => {
         <>
         {isLoaded ?
         <div className="video-player-box">
-        <video oncontextmenu="return false;" width="1280" height="720" autoPlay controls controlsList="nodownload">
+        <video width="1280" height="720" autoPlay controls controlsList="nodownload">
             <source src={video} type="video/mp4"/>
         </video>
         </div>

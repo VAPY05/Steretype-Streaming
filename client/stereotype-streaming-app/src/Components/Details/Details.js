@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 
 import "./Details.css"
 import { Loading } from '../Loading/Loading';
@@ -7,15 +7,16 @@ import { VideoPlayer } from '../Video/VideoPlayer';
 import { Link } from "react-router-dom";
 
 export const Details = (props) => {
-
     const {id} = useParams()
+
+    const navigate = useNavigate();
     
     const [isLoaded, setIsLoaded] = useState(false)
     const [movieTitle, setMovieTitle] = useState('');
     const [movieDescription, setMovieDescription] = useState('');
     const [movieUrl, setMovieUrl] = useState('');
     const [movieImg, setMovieImg] = useState('');
-
+    const [movieOwner, setMovieOwner] = useState('');
 
     useEffect(()=>{
         fetch(`http://localhost:3030/movies/${id}`)
@@ -30,7 +31,6 @@ export const Details = (props) => {
     },[])
 
     return (
-        
         <div className="movie-panel">
             {isLoaded ? 
             <>
@@ -44,6 +44,7 @@ export const Details = (props) => {
                         <div className="buttons">
                             <Link to={`/movies/${id}/watch`}><button className="play">Play</button></Link>
                             <button className="like">Like</button>
+                            <Link to={`/movies/${id}/edit`}><button className="edit">Edit</button></Link>
                             <button className="remove">Remove</button>
                         </div>
                     </div>

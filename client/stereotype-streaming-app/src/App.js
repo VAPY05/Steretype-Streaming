@@ -12,6 +12,8 @@ import { Details } from './Components/Details/Details';
 import { Profile } from './Components/Profile/Profile';
 import { Login } from './Components/Profile/Login/Login';
 import { Register } from './Components/Profile/Register/Register';
+import { CreateMovie } from './Components/CreateMovie/createMovie';
+import { EditMovie } from './Components/EditMovie/editMovie';
 
 function App() {
   return(
@@ -26,6 +28,8 @@ function App() {
         <Route path='/profile' element={<Profile/>}></Route>
         <Route path='/profile/login' element={<Login/>}></Route>
         <Route path='/profile/register' element={<Register/>}></Route>
+        <Route path='/movies/add-movie' element={<CreateMovie/>}></Route>
+        <Route path='/movies/:id/edit' element={<EditMovie/>}></Route>
         <Route path='*' element={<NotFound/>}></Route>
       </Routes>
     </BrowserRouter>

@@ -48,6 +48,13 @@
     border-radius: 10px;
 }
 
+.edit{
+    background-color: rgb(255, 225, 0);
+    color: white;
+    border: none;
+    border-radius: 10px;
+}
+
 .buttons button{
     margin-left: 10px;
     width: 130px;

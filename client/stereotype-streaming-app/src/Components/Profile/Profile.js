@@ -1,11 +1,25 @@
 import "./Profile.css"
 
-import { Link } from "react-router-dom"
+import { Link, Navigate, useNavigate } from "react-router-dom"
+import { useEffect } from "react"
 
 export const Profile = () => {
     
-    const user = localStorage.getItem("user")
+    const user = sessionStorage.getItem("username") && sessionStorage.getItem("accessToken") 
+    const navigate = useNavigate();
     
+    function logoutHandler() {
+            fetch('http://localhost:3030/user/logout',{
+                headers: {
+                    "X-Authorization": sessionStorage.getItem('accessToken')
+                }
+            })
+            .then((data)=>{
+                sessionStorage.clear()
+                navigate('/')
+            })
+    }
+
     return (
         <>
         {user 
@@ -13,21 +27,11 @@ export const Profile = () => {
             <div className="container">
         <div className="card">
             <img src="https://th.bing.com/th/id/R.e62421c9ba5aeb764163aaccd64a9583?rik=DzXjlnhTgV5CvA&riu=http%3a%2f%2fcdn.onlinewebfonts.com%2fsvg%2fimg_210318.png&ehk=952QCsChZS0znBch2iju8Vc%2fS2aIXvqX%2f0zrwkjJ3GA%3d&risl=&pid=ImgRaw&r=0" width={"130px"} height={"130px"} />
-            <p className="card__name">Lily-Grace Colley</p>
-            <div className="grid-container">
-
-                <div className="grid-child-posts">
-                    156 Post
-                </div>
-
-                <div className="grid-child-followers">
-                    1012 Likes
-                </div>
-            </div>
+            <p className="card__name">{sessionStorage.getItem("username")}</p>
 
             <Link to={"/movies/add-movie"}><button className="btn draw-border">Add Movie</button></Link>
             <Link to={"/bookmarks"}><button className="btn draw-border">Bookmarks</button></Link>
-            <button className="btn draw-border">Logout</button>
+            <button className="btn draw-border" onClick={logoutHandler}>Logout</button>
 
         </div>
         </div>

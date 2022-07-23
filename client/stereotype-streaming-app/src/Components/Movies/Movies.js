@@ -16,18 +16,16 @@ export const MovieList = () => {
         fetch('http://localhost:3030/movies')
             .then(res => res.json())
             .then(result => {
-                setMovie(movie => result)
+                setMovie(movie => Object.values(result)[0])
                 setIsActive(true)
             })
     }, []);
-
 
     let movies = movie.map((x) => <MovieItem key={x._id} img={x.img} title={x.name} url={x._id}/>)
     let reversedMovies = movies.slice(0).reverse()
 
     const responsive = {
         superLargeDesktop: {
-          // the naming can be any, depends on you.
           breakpoint: { max: 4000, min: 3000 },
           items: 6
         },
