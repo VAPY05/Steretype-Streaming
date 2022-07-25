@@ -20,11 +20,11 @@ export const Login = () => {
 				"Content-Type": "Application/JSON",
 			},
 		}).then(res=>res.json()).then(response=>{
-			response = response
+			if(response.username && response.accessToken && response._id){
 			sessionStorage.setItem('username',response.username)
 			sessionStorage.setItem('accessToken',response.accessToken)
 			sessionStorage.setItem('_id',response._id)
-
+			}
 			navigate('/')
 		})
 	}

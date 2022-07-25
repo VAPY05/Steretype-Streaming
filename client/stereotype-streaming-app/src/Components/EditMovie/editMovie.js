@@ -1,11 +1,13 @@
 import "./editMovie.css"
 
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
+
 
 export const EditMovie = (props) => {
 
     const {id} = useParams()
+	const navigate = useNavigate();
 
 	const [title, setTitle] = useState('')
 	const [description, setDescription] = useState('')
@@ -29,10 +31,13 @@ export const EditMovie = (props) => {
 		e.preventDefault()
 		fetch(`http://localhost:3030/movies/${id}`,{
 			method: "PUT",
+			body: JSON.stringify({title, description, img, url, _id: id}),
 			headers: {
+				"Content-Type": "Application/JSON",
 				"X-Authorization": sessionStorage.getItem('accessToken')
-			},
-			body: JSON.stringify({title: title, description: description, img: img, url: url, _id: id})
+			}
+		}).then(res=>{
+			navigate('/')
 		})
 	}
 

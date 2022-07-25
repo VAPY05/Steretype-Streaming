@@ -22,8 +22,12 @@ export const Register = () => {
 				"Content-Type": "Application/JSON",
 			},
 		}).then(res=>res.json()).then(response=>{
-			response = response
-			localStorage.setItem("user",JSON.stringify(response))
+			if(response.username && response.accessToken && response._id){
+				sessionStorage.setItem('username',response.username)
+				sessionStorage.setItem('accessToken',response.accessToken)
+				sessionStorage.setItem('_id',response._id)
+				}
+				navigate('/')
 			navigate('/')
 		})
 	}

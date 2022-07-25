@@ -7,10 +7,10 @@ import { VideoPlayer } from '../Video/VideoPlayer';
 import { Link } from "react-router-dom";
 
 export const Details = (props) => {
-    const {id} = useParams()
+    const { id } = useParams()
 
     const navigate = useNavigate();
-    
+
     const [isLoaded, setIsLoaded] = useState(false)
     const [movieTitle, setMovieTitle] = useState('');
     const [movieDescription, setMovieDescription] = useState('');
@@ -18,29 +18,30 @@ export const Details = (props) => {
     const [movieImg, setMovieImg] = useState('');
     const [movieOwner, setMovieOwner] = useState('');
 
-    useEffect(()=>{
+    useEffect(() => {
         fetch(`http://localhost:3030/movies/${id}`)
-        .then(response => response.json())
-        .then(res=>{
-            setMovieTitle(res.title)
-            setMovieDescription(res.description)
-            setMovieUrl(res.url)
-            setMovieImg(res.img)
-            setIsLoaded(true)
-        })
-    },[])
+            .then(response => response.json())
+            .then(res => {
+                setMovieTitle(res.title)
+                setMovieDescription(res.description)
+                setMovieUrl(res.url)
+                setMovieImg(res.img)
+                setMovieOwner(res.ownerId)
+                setIsLoaded(true)
+            })
+    }, [])
 
-    return (
-        <div className="movie-panel">
-            {isLoaded ? 
+return (
+    <div className="movie-panel">
+        {isLoaded ?
             <>
                 <div className="movie-panel">
                     <div>
-                        <img src={movieImg} width={550} height={800}/>
+                        <img src={movieImg} width={550} height={800} />
                     </div>
                     <div className="title-and-desc">
                         <h1 className="title">{movieTitle}</h1>
-                        <textarea className="desc" value={movieDescription} readOnly/>
+                        <textarea className="desc" value={movieDescription} readOnly />
                         <div className="buttons">
                             <Link to={`/movies/${id}/watch`}><button className="play">Play</button></Link>
                             <button className="like">Like</button>
@@ -53,10 +54,10 @@ export const Details = (props) => {
             </>
             :
             <>
-                <Loading/>
+                <Loading />
             </>
-            }
-            
-        </div>
-    )
+        }
+
+    </div>
+)
 }
