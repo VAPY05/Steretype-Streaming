@@ -1,4 +1,4 @@
-import loading from '../Loading/256x256.gif'
+import loading from './256x256.gif'
 import "./Loading.css"
 
 export const Loading = () => {

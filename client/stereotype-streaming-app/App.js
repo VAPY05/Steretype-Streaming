@@ -18,7 +18,6 @@ import { EditMovie } from './Components/EditMovie/editMovie';
 function App() {
   return(
     <div>
-    <BrowserRouter>
       <Menu/>
       <Routes>
         <Route path='/' element={<MovieList/>}></Route>
@@ -32,7 +31,6 @@ function App() {
         <Route path='/movies/:id/edit' element={<EditMovie/>}></Route>
         <Route path='*' element={<NotFound/>}></Route>
       </Routes>
-    </BrowserRouter>
     </div>
   )
 }
