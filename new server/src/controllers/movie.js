@@ -8,8 +8,18 @@ const router = require('express').Router();
 
 router.get('/movies',async(req,res)=>{
     try{
-        const movies = await getAllMovies(); 
+        const movies = await getAllMovies();
         res.status(200).json({movies: movies})
+    }catch(error){
+        res.json({Error: "There is a problem! Movies cannot be received."})
+    }
+})
+
+router.get('/movies/new',async(req,res)=>{
+    try{
+        let movies = await getAllMovies();
+        const newMovies = movies.reverse(); 
+        res.status(200).json({movies: newMovies})
     }catch(error){
         res.json({Error: "There is a problem! Movies cannot be received."})
     }
