@@ -29,6 +29,9 @@ export const Login = () => {
 					accessToken: response.accessToken,
 					_id: response._id
 				})
+				localStorage.setItem("token", response.accessToken)
+				localStorage.setItem("id", response._id)
+				localStorage.setItem("username", response.username)
 				navigate('/')
 			}else{
 				navigate('/404')
