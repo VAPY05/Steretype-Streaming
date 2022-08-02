@@ -1,6 +1,6 @@
 import './App.css';
 
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 
 import { Menu } from '../src/Components/Menu/Menu'
 import { Search } from '../src/Components/Search/Search'
@@ -16,7 +16,7 @@ import { EditMovie } from './Components/EditMovie/editMovie';
 import { MoviesAll } from './Components/Movies/MoviesAll/MoviesAll';
 
 import { authContext } from './contexts/authContext';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function App() {
 
@@ -25,6 +25,24 @@ function App() {
   const loginHandler = (authData) => {
     setAuth(authData)
   }
+
+  const AuthHandler = ({children}) => {
+    if(localStorage.getItem("username")) {
+      console.log("user")
+      return children;
+    }
+      return <Navigate to="/profile/login" replace />;
+  }
+
+  useEffect(() => {
+    if(localStorage.getItem("token")) {
+      loginHandler({
+        username: localStorage.getItem("username"),
+        accessToken: localStorage.getItem("token"),
+        _id: localStorage.getItem("id")
+      })
+    } 
+  }, [])
 
   return (
     <authContext.Provider value={{ user:auth, loginHandler }}>
@@ -35,11 +53,11 @@ function App() {
           <Route path='/search' element={<Search />}></Route>
           <Route path='/movies/:id/details' element={<Details />}></Route>
           <Route path='/movies/:id/watch' element={<VideoPlayer />}></Route>
-          <Route path='/profile' element={<Profile />}></Route>
+          <Route path='/profile' element={<AuthHandler><Profile /></AuthHandler>}></Route>
           <Route path='/profile/login' element={<Login />}></Route>
           <Route path='/profile/register' element={<Register />}></Route>
-          <Route path='/movies/add-movie' element={<CreateMovie />}></Route>
-          <Route path='/movies/:id/edit' element={<EditMovie />}></Route>
+          <Route path='/movies/add-movie' element={<AuthHandler><CreateMovie /></AuthHandler>}></Route>
+          <Route path='/movies/:id/edit' element={<AuthHandler><EditMovie /></AuthHandler>}></Route>
           <Route path='/movies/new' element={<MoviesAll type={"new"} />}></Route>
           <Route path='/movies' element={<MoviesAll type={""} />}></Route>
           <Route path='*' element={<NotFound />}></Route>
