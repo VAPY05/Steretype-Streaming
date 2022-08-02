@@ -20,6 +20,7 @@ export const Profile = () => {
             })
             .then((data)=>{
                 userContext.loginHandler({})
+                localStorage.clear()
                 navigate('/')
             })
     }
