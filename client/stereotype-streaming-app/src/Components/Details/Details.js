@@ -23,6 +23,12 @@ export const Details = (props) => {
     const userContext = useContext(authContext);
 	const user = userContext.user;
 
+    const handleLike = () => {
+        if(movieOwner != user._id || user._id != undefined) {
+            return <button className="like">Like</button>
+        }
+    }
+
     useEffect(() => {
             getMovieById(id)
             .then(res=>{
@@ -34,6 +40,20 @@ export const Details = (props) => {
                 setIsLoaded(true)
             })
     }, [])
+
+    function deleteHandler(id) {
+        fetch(`http://localhost:3030/movies/${id}`,{
+            method: "DELETE",
+            headers: {
+                "Content-Type": "Application/JSON",
+                "X-Authorization": user.accessToken,
+            },
+            body: JSON.stringify({_id: id, movieOwner})
+        })
+        .then(()=>{
+            navigate('/')
+        })
+    }
 
 return (
     <div className="movie-panel">
@@ -48,9 +68,11 @@ return (
                         <textarea className="desc" value={movieDescription} readOnly />
                         <div className="buttons">
                             <Link to={`/movies/${id}/watch`}><button className="play">Play</button></Link>
-                            <button className="like">Like</button>
-                            <Link to={`/movies/${id}/edit`}><button className="edit">Edit</button></Link>
-                            <button className="remove">Remove</button>
+                            {handleLike}
+                            { movieOwner == user._id
+                            ? <><Link to={`/movies/${id}/edit`}><button className="edit">Edit</button></Link>
+                            <button className="remove" onClick={() => deleteHandler(id)}>Remove</button></> 
+                            : null }
                         </div>
                     </div>
 
