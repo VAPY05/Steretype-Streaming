@@ -1,14 +1,16 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, useContext } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 
 import "./Details.css"
 import { Loading } from '../Loading/Loading';
 import { VideoPlayer } from '../Video/VideoPlayer';
 import { Link } from "react-router-dom";
+import { authContext } from "../../contexts/authContext";
+import { getMovieById } from "../../services/movies";
 
 export const Details = (props) => {
     const { id } = useParams()
-
+    
     const navigate = useNavigate();
 
     const [isLoaded, setIsLoaded] = useState(false)
@@ -18,10 +20,12 @@ export const Details = (props) => {
     const [movieImg, setMovieImg] = useState('');
     const [movieOwner, setMovieOwner] = useState('');
 
+    const userContext = useContext(authContext);
+	const user = userContext.user;
+
     useEffect(() => {
-        fetch(`http://localhost:3030/movies/${id}`)
-            .then(response => response.json())
-            .then(res => {
+            getMovieById(id)
+            .then(res=>{
                 setMovieTitle(res.title)
                 setMovieDescription(res.description)
                 setMovieUrl(res.url)

@@ -1,7 +1,11 @@
 import "./editMovie.css"
 
-import { useEffect, useState } from "react"
+import { useEffect, useState, useContext } from "react"
 import { useNavigate, useParams } from "react-router-dom"
+
+import { authContext } from "../../contexts/authContext"
+
+import { getMovieById } from "../../services/movies"
 
 
 export const EditMovie = (props) => {
@@ -14,17 +18,17 @@ export const EditMovie = (props) => {
 	const [img, setImg] = useState('')
 	const [url, setUrl] = useState('')
 
-    useEffect(()=>{
-        fetch(`http://localhost:3030/movies/${id}`,{
-            method: "GET",
-        })
-        .then((res)=>res.json())
-        .then((data)=>{
-            setTitle(data.title)
+	const userContext = useContext(authContext);
+	const user = userContext.user;
+
+	useEffect(()=>{
+		getMovieById(id)
+		.then(data => {
+			setTitle(data.title)
             setDescription(data.description)
             setImg(data.img)
             setUrl(data.url)
-        })
+		})
     },[])
 
 	function editMovieHandler(e) {
@@ -34,7 +38,7 @@ export const EditMovie = (props) => {
 			body: JSON.stringify({title, description, img, url, _id: id}),
 			headers: {
 				"Content-Type": "Application/JSON",
-				"X-Authorization": sessionStorage.getItem('accessToken')
+				"X-Authorization": user.accessToken
 			}
 		}).then(res=>{
 			navigate('/')
