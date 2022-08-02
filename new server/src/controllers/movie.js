@@ -4,6 +4,8 @@ const errorMapper = require('../util/errorMapper');
 const {isOwner, isAuth} = require('../middlewares/guards')
 const preloads = require('../middlewares/preloads')
 
+const jtw = require('jsonwebtoken')
+
 const router = require('express').Router();
 
 router.get('/movies',async(req,res)=>{
@@ -38,13 +40,6 @@ router.post('/movies',isAuth(),async(req,res)=>{
 })
 
 router.get('/movies/:id',preloads(),async(req,res)=>{
-    /* try{
-        id = req.params.id
-        const movie = await getMovieById(id);
-        res.status(200).json({movie})
-    }catch(error){
-        res.status(404).json({message: `Movie was not found!`});
-    } */
         res.json(res.locals.item);
 })
 
@@ -61,11 +56,15 @@ router.put('/movies/:id',preloads(),isOwner(),async(req,res)=>{
     }
 })
 
-router.delete('/movies/:id',isOwner(),async(req,res)=>{
+router.delete('/movies/:id',async(req,res)=>{
     try{
-
-        const result = await deleteMovie(req.body);
-        res.status(200).send({result})
+        const accessToken = req.headers["x-authorization"]
+        const payload = jtw.decode(accessToken)
+        const userId = payload._id
+        if(req.body["movieOwner"]){
+            const result = await deleteMovie(req.body);
+            res.status(200).send({result})
+        }
     }catch(error){
         res.status(404).json({message: `Item was not found!`});
     }
