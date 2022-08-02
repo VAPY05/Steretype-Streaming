@@ -6,6 +6,9 @@ import { MovieItem } from './Movie.item';
 import {SliderWithMovies} from "../SliderWithMovies/SliderWithMovies"
 import { Loading } from '../Loading/Loading';
 
+import { getAllMovies } from '../../services/movies';
+
+
 
 export const MovieList = () => {
 
@@ -13,12 +16,12 @@ export const MovieList = () => {
     const [isActive, setIsActive] = useState(false);
 
     useEffect(() => {
-        fetch('http://localhost:3030/movies')
-            .then(res => res.json())
-            .then(result => {
-                setMovie(movie => Object.values(result)[0])
-                setIsActive(true)
+            getAllMovies()
+            .then(data=>{
+              setMovie(data["movies"])
+              setIsActive(true)
             })
+            
     }, []);
 
     let movies = movie.map((x) => <MovieItem key={x._id} img={x.img} title={x.name} url={x._id}/>)
