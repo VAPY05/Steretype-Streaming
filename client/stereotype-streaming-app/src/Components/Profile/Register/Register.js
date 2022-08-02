@@ -1,6 +1,9 @@
-import {useState} from "react"
 
 import "./Register.css"
+
+import {useState, useContext} from "react"
+
+import { authContext } from "../../../contexts/authContext"
 
 import {Link, useNavigate} from "react-router-dom" 
 
@@ -10,6 +13,9 @@ export const Register = () => {
 	const [username, setUsername] = useState('')
 	const [password, setPassword] = useState('')
 	const [repeatedPassword, setRepeatedPassword] = useState('')
+
+	const userContext = useContext(authContext);
+	const user = userContext.user;
 
 	const navigate = useNavigate();
 
@@ -23,12 +29,14 @@ export const Register = () => {
 			},
 		}).then(res=>res.json()).then(response=>{
 			if(response.username && response.accessToken && response._id){
-				sessionStorage.setItem('username',response.username)
-				sessionStorage.setItem('accessToken',response.accessToken)
-				sessionStorage.setItem('_id',response._id)
+				userContext.loginHandler({
+					"username": response.username,
+					"accessToken": response.accessToken,
+					"_id": response._id
+				})
 				}
 				navigate('/')
-			navigate('/')
+			navigate("/404")
 		})
 	}
 
@@ -41,7 +49,7 @@ export const Register = () => {
 						<input type="password" placeholder="password" value={password} onChange={(e)=>{setPassword(e.target.value)}}/>
 						<input type="password" placeholder="repeat password" value={repeatedPassword} onChange={(e)=>{setRepeatedPassword(e.target.value)}}/>
 						<button>Register</button>
-						<p className="message">Already registered? <Link to={"/profile/login"}>Sing in</Link></p>
+						<p className="message">Already registered? <Link to={"/profile/login"}>Sign in</Link></p>
 					</form>
 				</div>
 			</div>

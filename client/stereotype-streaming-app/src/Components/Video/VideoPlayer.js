@@ -3,6 +3,8 @@ import "./VideoPlayer.css"
 import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
 import { Loading } from "../Loading/Loading"
+import { getMovieById } from "../../services/movies"
+
 
 
 export const VideoPlayer = (props) => {
@@ -13,12 +15,11 @@ export const VideoPlayer = (props) => {
     const [video, setVideo] = useState('');
     
     useEffect(()=>{
-        fetch(`http://localhost:3030/movies/${id}`)
-        .then(response => response.json())
-            .then(res=>{
-                setVideo(video => res.url)
-                setIsLoaded(true)
-            })
+        getMovieById(id)
+        .then(res => {
+            setVideo(video => res.url)
+            setIsLoaded(true)
+        })
     },[])
     
 

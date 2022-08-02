@@ -16,7 +16,7 @@ export const Menu = (props) => {
                     <ul className="menu-list">
                         <li className="menu-list item"><Link to={"/"}>Home</Link></li>
                         <li className="menu-list item"><Link to={"/movies"}>Movies</Link></li>
-                        <li className="menu-list item"><Link to={"/new"}>New</Link></li>
+                        <li className="menu-list item"><Link to={"/movies/new"}>New</Link></li>
                         <li className="menu-list item"><Link to={"/trending"}>Trending</Link></li>
                     </ul>
                 </div>
