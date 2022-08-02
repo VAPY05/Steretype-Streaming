@@ -61,8 +61,9 @@ router.put('/movies/:id',preloads(),isOwner(),async(req,res)=>{
     }
 })
 
-router.delete('/movies/:id',isAuth(),isOwner(),async(req,res)=>{
+router.delete('/movies/:id',isOwner(),async(req,res)=>{
     try{
+
         const result = await deleteMovie(req.body);
         res.status(200).send({result})
     }catch(error){
