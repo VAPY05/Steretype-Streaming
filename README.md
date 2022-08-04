@@ -1,6 +1,6 @@
-
+<p align="center">
 ![Logo](https://github.com/VAPY05/Steretype-Streaming/blob/main/assets/logo-front-end.png)
-
+</p>
 
 # Stereotype Streaming
 
