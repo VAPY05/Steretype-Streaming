@@ -51,8 +51,8 @@ export const MovieList = () => {
         <>
         {!isActive ? <Loading/> : 
         <>
-        <SliderWithMovies title={"New Releases"} movies={movies} responsive={responsive}/>
-        <SliderWithMovies title={"Movies"} movies={reversedMovies} responsive={responsive}/>
+        <SliderWithMovies title={"New Releases"} movies={reversedMovies} responsive={responsive}/>
+        <SliderWithMovies title={"Movies"} movies={movies} responsive={responsive}/>
         </>
         }
         </>

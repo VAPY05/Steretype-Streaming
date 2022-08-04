@@ -36,3 +36,28 @@ exports.getMovieById = async(id) =>{
     const movie = await Movie.findById(id);
     return movie;
 }
+
+exports.like = async(id, movieOwner) => {
+    let movie = await Movie.findById(id);
+    if(!(movie.likedBy).includes(movieOwner) && movieOwner != null){
+        movie.likedBy.push(movieOwner)
+        const likeCount = (movie.likedBy).length 
+        movie.save()
+        return [
+            likeCount,
+            "Liked"
+        ]
+    }else{
+        if(movieOwner == null){
+            throw Error("You can't like your movie!")
+        }
+        const everyIds = movie.likedBy.filter((a)=> a != movieOwner)
+        movie.likedBy = everyIds
+        const likeCount = (movie.likedBy).length
+        movie.save()
+        return [
+            likeCount,
+            "Like"
+        ]
+    }
+}

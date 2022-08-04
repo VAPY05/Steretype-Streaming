@@ -39,7 +39,10 @@ const movieScheme = new mongoose.Schema({
     },
     ownerId: {
         type: mongoose.Types.ObjectId, ref: 'User'
-    }
+    },
+    likedBy: [{
+        type: mongoose.Types.ObjectId, ref: 'User',
+    }]
 })
 
 const Movie = mongoose.model('Movie',movieScheme)

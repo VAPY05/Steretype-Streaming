@@ -17,13 +17,13 @@ export const Menu = (props) => {
                         <li className="menu-list item"><Link to={"/"}>Home</Link></li>
                         <li className="menu-list item"><Link to={"/movies"}>Movies</Link></li>
                         <li className="menu-list item"><Link to={"/movies/new"}>New</Link></li>
-                        <li className="menu-list item"><Link to={"/trending"}>Trending</Link></li>
+                        <li className="menu-list item"><Link to={"/movies/trending"}>Trending</Link></li>
                     </ul>
                 </div>
                 </div>
             </div>
     <div className="sidebar">
-        <Link to={"/search"}><FontAwesomeIcon icon={faMagnifyingGlass} className="left-menu-icon"/></Link>
+        <Link to={"/movies/search"}><FontAwesomeIcon icon={faMagnifyingGlass} className="left-menu-icon"/></Link>
         <Link to={"/movies"}><FontAwesomeIcon icon={faTv} className="left-menu-icon"/></Link>
         <Link to={"/"}><FontAwesomeIcon icon={faHome} className="left-menu-icon"/></Link>
         <Link to={"/profile"}><FontAwesomeIcon icon={faUser} className="left-menu-icon"/></Link>

@@ -14,9 +14,11 @@ import { Register } from './Components/Profile/Register/Register';
 import { CreateMovie } from './Components/CreateMovie/createMovie';
 import { EditMovie } from './Components/EditMovie/editMovie';
 import { MoviesAll } from './Components/Movies/MoviesAll/MoviesAll';
+import { MovieSearch } from './Components/Movies/MovieSearch/MovieSearch';
 
 import { authContext } from './contexts/authContext';
 import { useEffect, useState } from 'react';
+import { Bookmarks } from './Components/Movies/Bookmarks/Bookmarks';
 
 function App() {
 
@@ -28,7 +30,6 @@ function App() {
 
   const AuthHandler = ({children}) => {
     if(localStorage.getItem("username")) {
-      console.log("user")
       return children;
     }
       return <Navigate to="/profile/login" replace />;
@@ -50,7 +51,8 @@ function App() {
         <Menu />
         <Routes>
           <Route path='/' element={<MovieList />}></Route>
-          <Route path='/search' element={<Search />}></Route>
+          <Route path='/movies/search' element={<Search />}></Route>
+          <Route path='/movies/search/:search' element={<MovieSearch/>}></Route>
           <Route path='/movies/:id/details' element={<Details />}></Route>
           <Route path='/movies/:id/watch' element={<VideoPlayer />}></Route>
           <Route path='/profile' element={<AuthHandler><Profile /></AuthHandler>}></Route>
@@ -59,7 +61,9 @@ function App() {
           <Route path='/movies/add-movie' element={<AuthHandler><CreateMovie /></AuthHandler>}></Route>
           <Route path='/movies/:id/edit' element={<AuthHandler><EditMovie /></AuthHandler>}></Route>
           <Route path='/movies/new' element={<MoviesAll type={"new"} />}></Route>
-          <Route path='/movies' element={<MoviesAll type={""} />}></Route>
+          <Route path='/movies/trending' element={<MoviesAll type={"trends"} />}></Route>
+          <Route path='/movies' element={<MoviesAll type={"alphabetically"} />}></Route>
+          <Route path='/bookmarks' element={<AuthHandler><Bookmarks /></AuthHandler>}></Route>
           <Route path='*' element={<NotFound />}></Route>
         </Routes>
       </div>

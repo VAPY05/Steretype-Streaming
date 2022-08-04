@@ -1,7 +1,10 @@
 const router = require('express').Router();
 const errorMapper = require('../util/errorMapper');
 
+const isAuth = require('../middlewares/auth')
+
 const api = require('../services/user')
+const jwt = require('jsonwebtoken');
 
 router.post('/user/register',async(req,res)=>{
     const username = req.body.username;
@@ -29,6 +32,18 @@ router.post('/user/login',async(req,res)=>{
 router.get("/user/logout",(req,res)=>{
     api.logout(req.headers["x-authorization"]);
     res.status(204).end()
+})
+
+router.get('/user/bookmarks',isAuth(),async(req,res)=>{
+    try{
+        const accessToken = req.headers["x-authorization"]
+        const payload = jwt.decode(accessToken)
+        const userId = payload._id
+        const bookmarks = await api.bookmarked(userId)
+        res.status(200).send(bookmarks)
+    }catch(error){
+        res.status(404).json({message: `Empty array of movies!`});
+    }
 })
 
 module.exports = router

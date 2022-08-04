@@ -1,21 +1,18 @@
 import { useEffect, useState } from "react"
 
 
-export const useGetMovies = (type) => {
+export const useGetMoviesBySearch = (search) => {
     const [movies, setMovies] = useState([]);
     const [isLoaded, setIsLoaded] = useState(false)
-    let userId;
-    if(type.user){
-        userId = `/${type.user}`;
-    }
+
     useEffect(()=>{
-        fetch(`http://localhost:3030/movies/${type}`)
+        fetch(`http://localhost:3030/movies/search/${search}`)
             .then(res=>res.json())
             .then(data=> {
                 setMovies(data)
                 setIsLoaded(true)
             })
-    },[type])
+    },[search])
 
     return [
         movies["movies"],

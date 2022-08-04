@@ -11,7 +11,7 @@ export const Search = () => {
     const navigate = useNavigate();
 
     function searchHandler() {
-        navigate(`/movies/${value}`)
+        navigate(`/movies/search/${value}`)
     }
 
     return (

@@ -1,4 +1,6 @@
 const User = require('../models/User')
+const Movie = require('../models/Movie')
+
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 
@@ -58,10 +60,23 @@ function createSession(user) {
     }
 }
 
+async function bookmarked(id) {
+    let movies = await Movie.find({});
+    let likedByUserMovies = movies.filter((a)=>{
+        return a.likedBy.includes(id)
+    })
+    if(likedByUserMovies.length == 0){
+        throw Error("No movies")
+    }else{
+        return likedByUserMovies
+    }
+}
 
 module.exports = {
     register,
     login,
     logout,
-    validateToken
+    validateToken,
+    bookmarked,
 }
+

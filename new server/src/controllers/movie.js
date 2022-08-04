@@ -1,10 +1,10 @@
-const { getAllMovies, createMovie, getMovieById, editMovie, deleteMovie} = require('../services/movie');
+const { getAllMovies, createMovie, getMovieById, editMovie, deleteMovie, like} = require('../services/movie');
 const errorMapper = require('../util/errorMapper');
 
 const {isOwner, isAuth} = require('../middlewares/guards')
 const preloads = require('../middlewares/preloads')
 
-const jtw = require('jsonwebtoken')
+const jtw = require('jsonwebtoken');
 
 const router = require('express').Router();
 
@@ -21,6 +21,44 @@ router.get('/movies/new',async(req,res)=>{
     try{
         let movies = await getAllMovies();
         const newMovies = movies.reverse(); 
+        res.status(200).json({movies: newMovies})
+    }catch(error){
+        res.json({Error: "There is a problem! Movies cannot be received."})
+    }
+})
+
+router.get('/movies/trends',async(req,res)=>{
+    try{
+        let movies = await getAllMovies();
+        let newMovies = movies.sort((a,b)=>{
+            return b.likedBy.length - a.likedBy.length
+        })
+        res.status(200).json({movies: newMovies})
+    }catch(error){
+        res.json({Error: "There is a problem! Movies cannot be received."})
+    }
+})
+
+router.get('/movies/alphabetically',async(req,res)=>{
+    try{
+        let movies = await getAllMovies();
+        let newMovies = movies.sort((a,b)=>{
+            return a.title.localeCompare(b.title)
+        })
+        res.status(200).json({movies: newMovies})
+    }catch(error){
+        res.json({Error: "There is a problem! Movies cannot be received."})
+    }
+})
+
+router.get('/movies/search/:search',async(req,res)=>{
+    try{
+        const search = req.params.search
+        let movies = await getAllMovies();
+        let newMovies = movies.filter((a)=>{
+            return (a.title.toUpperCase()).startsWith(search) || (a.title.toLowerCase()).startsWith(search)
+            
+        }) 
         res.status(200).json({movies: newMovies})
     }catch(error){
         res.json({Error: "There is a problem! Movies cannot be received."})
@@ -67,6 +105,22 @@ router.delete('/movies/:id',async(req,res)=>{
         }
     }catch(error){
         res.status(404).json({message: `Item was not found!`});
+    }
+})
+
+router.post('/movies/:id/like',isAuth(),async(req,res)=>{
+    try{
+        const movieId = req.params.id
+        const ownerId = req.body.movieOwner
+        try{
+            const [likeCount, status] = await like(movieId, ownerId)
+            res.status(200).send({likeCount, status})
+        }catch(err){
+            res.status(400).send("You can't like your movies!")
+        }
+    }
+    catch(err){
+        console.error(err)
     }
 })
 
