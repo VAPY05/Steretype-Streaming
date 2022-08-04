@@ -2,23 +2,23 @@ import './App.css';
 
 import { Routes, Route, Navigate } from "react-router-dom";
 
-import { Menu } from '../src/Components/Menu/Menu'
-import { Search } from '../src/Components/Search/Search'
-import { MovieList } from '../src/Components/Movies/Movies'
-import { NotFound } from './Components/404/404';
-import { VideoPlayer } from './Components/Video/VideoPlayer';
-import { Details } from './Components/Details/Details';
-import { Profile } from './Components/Profile/Profile';
-import { Login } from './Components/Profile/Login/Login';
-import { Register } from './Components/Profile/Register/Register';
-import { CreateMovie } from './Components/CreateMovie/createMovie';
-import { EditMovie } from './Components/EditMovie/editMovie';
-import { MoviesAll } from './Components/Movies/MoviesAll/MoviesAll';
-import { MovieSearch } from './Components/Movies/MovieSearch/MovieSearch';
+import { Menu } from '../src/components/Menu/Menu'
+import { Search } from '../src/components/Search/Search'
+import { MovieList } from '../src/components/Movies/Movies'
+import { NotFound } from './components/404/404';
+import { VideoPlayer } from './components/Video/VideoPlayer';
+import { Details } from './components/Details/Details';
+import { Profile } from './components/Profile/Profile';
+import { Login } from './components/Profile/Login/Login';
+import { Register } from './components/Profile/Register/Register';
+import { CreateMovie } from './components/CreateMovie/createMovie';
+import { EditMovie } from './components/EditMovie/editMovie';
+import { MoviesAll } from './components/Movies/MoviesAll/MoviesAll';
+import { MovieSearch } from './components/Movies/MovieSearch/MovieSearch';
 
 import { authContext } from './contexts/authContext';
 import { useEffect, useState } from 'react';
-import { Bookmarks } from './Components/Movies/Bookmarks/Bookmarks';
+import { Bookmarks } from './components/Movies/Bookmarks/Bookmarks';
 
 function App() {
 
