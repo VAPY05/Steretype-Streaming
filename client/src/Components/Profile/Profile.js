@@ -4,6 +4,7 @@ import { Link, Navigate, useNavigate } from "react-router-dom"
 import { useEffect, useContext } from "react"
 
 import { authContext } from "../../contexts/authContext"
+import { logout } from "../../services/user"
 
 export const Profile = () => {
     
@@ -13,11 +14,7 @@ export const Profile = () => {
     const navigate = useNavigate();
     
     function logoutHandler() {
-            fetch('http://localhost:3030/user/logout',{
-                headers: {
-                    "X-Authorization": user.accessToken
-                }
-            })
+        logout(user.accessToken)
             .then((data)=>{
                 userContext.loginHandler({})
                 localStorage.clear()

@@ -6,6 +6,8 @@ import {useState, useContext} from "react"
 import { authContext } from "../../../contexts/authContext"
 
 import {Link, useNavigate} from "react-router-dom" 
+import { register } from "../../../services/user"
+
 
 
 export const Register = () => {
@@ -25,13 +27,12 @@ export const Register = () => {
 
 	function SubmitHandler(e) {
 		e.preventDefault()
-		fetch('http://localhost:3030/user/register',{
-			method: "POST",
-			body: JSON.stringify({username, password}),
-			headers: {
-				"Content-Type": "Application/JSON",
-			},
-		}).then(res=>res.json()).then(response=>{
+		const body = {
+			username,
+			password
+		}
+		register(body)
+		.then(response=>{
 			if(response.username && response.accessToken && response._id){
 				userContext.loginHandler({
 					"username": response.username,

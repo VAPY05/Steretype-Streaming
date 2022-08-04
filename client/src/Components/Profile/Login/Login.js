@@ -1,5 +1,7 @@
 import "./Login.css"
 
+import { login } from "../../../services/user"
+
 import { useState, useContext } from "react"
 import { authContext } from "../../../contexts/authContext"
 
@@ -19,13 +21,13 @@ export const Login = () => {
 
 	function submitHandler(e) {
 		e.preventDefault()
-		fetch('http://localhost:3030/user/login',{
-			method: "POST",
-			body: JSON.stringify({username, password}),
-			headers: {
-				"Content-Type": "Application/JSON",
-			},
-		}).then(res=>res.json()).then(response=>{
+		const body = {
+			username,
+			password
+		}
+
+		login(body)
+			.then(response=>{
 			if(response.username && response.accessToken && response._id){
 				loginHandler({
 					username: response.username,
