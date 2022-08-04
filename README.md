@@ -18,7 +18,6 @@ Stereotype Streaming is a project that I am creating with passion as Project Def
 ![JavaScript](https://img.shields.io/badge/Javascript-a57f1c.svg?&style=flat&logo=javascript&logoColor=%23F7DF1E)&nbsp;
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-flat&logo=react&logoColor=%2361DAFB)&nbsp;
 ![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-flat&logo=express&logoColor=%2361DAFB)&nbsp;
-![Heroku](https://img.shields.io/badge/heroku-%23430098.svg?style=for-the-flat&logo=heroku&logoColor=white)&nbsp;
 ![React Router](https://img.shields.io/badge/React_Router-CA4245?style=for-the-flat&logo=react-router&logoColor=white)&nbsp;
 ![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-flat&logo=mongodb&logoColor=white)&nbsp;
 ![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-flat&logo=visual-studio-code&logoColor=white)
