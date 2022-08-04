@@ -2,7 +2,7 @@
 
 # Stereotype Streaming
 
-A brief description of what this project does and who it's for
+Stereotype Streaming is a project that I am creating with passion as Project Defense for [ReactJS](https://softuni.bg/trainings/3727/reactjs-june-2022) course at [SoftUni](https://softuni.bg/). The idea was born in early 2020, but the work started at the beginning of the course. The project represents the skills that I acquired in the module [JS-Web](https://softuni.bg/modules/122/js-web/1307) such as routing with React Router V6, creating components, creating and manipulating controlled forms, keeping state and using hooks. I wrote the entire Back-End server with ExpressJS and MongoDB and of course the Front-End with ReactJS and other libraries.
 
 
 ## Author
