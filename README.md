@@ -23,7 +23,7 @@ Stereotype Streaming is a project that I am creating with passion as Project Def
 ![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-flat&logo=visual-studio-code&logoColor=white)
 ## Installation
 
-Install my-project with npm
+Install stereotype-streaming with npm
 
 client:
 ```bash
