@@ -3,6 +3,7 @@ import "./createMovie.css"
 import { useState, useContext } from "react"
 import { authContext } from "../../contexts/authContext"
 import { useNavigate } from "react-router-dom"
+import { createMovie } from "../../services/movies"
 
 export const CreateMovie = (props) => {
 
@@ -17,17 +18,23 @@ export const CreateMovie = (props) => {
 	const accessToken = userContext.accessToken
 	const userId = userContext._id
 
-	function createMovieHandler(e) {
+	
+
+	async function createMovieHandler(e) {
 		e.preventDefault()
-		fetch('http://localhost:3030/movies',{
-			method: "POST",
-			headers: {
-				"Content-Type": "Application/JSON",
-				"X-Authorization": accessToken
-			},
-			body: JSON.stringify({title: title, description: description, img: img, url: url, ownerId: userId})
-		})
-		navigate('/')
+		const body = {
+			title,
+			description,
+			img,
+			url,
+			ownerId: userId
+		}
+		try{
+			await createMovie(accessToken, body)
+			navigate('/')
+		}catch(err){
+			navigate('/404')
+		}
 	}
 
 	return (

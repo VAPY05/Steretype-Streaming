@@ -5,7 +5,7 @@ import { Navigate, useNavigate, useParams } from "react-router-dom"
 
 import { authContext } from "../../contexts/authContext"
 
-import { getMovieById } from "../../services/movies"
+import { editMovie, getMovieById } from "../../services/movies"
 
 
 export const EditMovie = (props) => {
@@ -42,18 +42,21 @@ export const EditMovie = (props) => {
 	
 	
 
-	function editMovieHandler(e) {
+	async function editMovieHandler(e) {
 		e.preventDefault()
-		fetch(`http://localhost:3030/movies/${id}`, {
-			method: "PUT",
-			body: JSON.stringify({ title, description, img, url, _id: id }),
-			headers: {
-				"Content-Type": "Application/JSON",
-				"X-Authorization": user.accessToken
-			}
-		}).then(res => {
+		const body = {
+			title,
+			description,
+			img,
+			url,
+			_id: id
+		}
+		try{
+			await editMovie(id, user.accessToken, body)
 			navigate('/')
-		})
+		}catch(err){
+			navigate('/404')
+		}
 	}
 
 	return (<>
