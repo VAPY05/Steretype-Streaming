@@ -16,9 +16,9 @@ export const Register = () => {
 	const [password, setPassword] = useState('')
 	const [repeatedPassword, setRepeatedPassword] = useState('')
 
-	const [usernameHasError, setUsernameHasError] = useState(true)
-	const [passwordHasError, setPasswordHasError] = useState(true)
-	const [repeatedPasswordHasError, setRepeatedPasswordHasError] = useState(true)
+	const [usernameHasError, setUsernameHasError] = useState('')
+	const [passwordHasError, setPasswordHasError] = useState('')
+	const [repeatedPasswordHasError, setRepeatedPasswordHasError] = useState('')
 
 	const userContext = useContext(authContext);
 	const user = userContext.user;
@@ -97,7 +97,10 @@ export const Register = () => {
 						<small className="error">Repeated Password is too short or not matching!</small>
 						}
 
-						<button>Register</button>
+						{usernameHasError != false || passwordHasError != false || repeatedPasswordHasError != false
+						?<button disabled>Register</button>
+						:<button>Register</button>
+						}
 						<p className="message">Already registered? <Link to={"/profile/login"}>Sign in</Link></p>
 					</form>
 				</div>

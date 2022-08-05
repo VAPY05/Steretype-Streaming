@@ -12,8 +12,8 @@ export const Login = () => {
 	const [username, setUsername] = useState('')
 	const [password, setPassword] = useState('')
 
-	const [usernameHasError, setUsernameHasError] = useState(true)
-	const [passwordHasError, setPasswordHasError] = useState(true)
+	const [usernameHasError, setUsernameHasError] = useState('')
+	const [passwordHasError, setPasswordHasError] = useState('')
 
 	const {loginHandler} = useContext(authContext);
 
@@ -68,15 +68,15 @@ export const Login = () => {
 						<input type="text" placeholder="username" value={username} onChange={(e)=>{setUsername(e.target.value)}} onBlur={usernameValidator}/>
 		
 						{usernameHasError && 
-						<small className="error">Username is too short!</small>
+						<small className="error">Username should be at least 4 symbols long!</small>
 						}
 		
 						<input type="password" placeholder="password" value={password} onChange={(e)=>{setPassword(e.target.value)}} onBlur={passwordValidator}/>
 						{passwordHasError && 
-						<small className="error">Password is too short!</small>
+						<small className="error">Password should be at least 4 symbols long!</small>
 						}
 
-						{passwordHasError || usernameHasError ? <button disabled>login</button> : <button>login</button>}
+						{passwordHasError == true || usernameHasError == true ? <button disabled>login</button> : <button onClick={()=>submitHandler()}>login</button>}
 						
 						<p className="message">Not registered? <Link to={"/profile/register"}>Create an account</Link></p>
 					</form>
