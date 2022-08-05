@@ -12,6 +12,19 @@ Stereotype Streaming is a project that I am creating with passion as Project Def
 - [@VAPY05](https://github.com/VAPY05)
 
 
+## Architecture
+
+Front-End:
+  At the heart of the application is app.js, in which the components and React Router V6 are located. We have a folder with all components called components in which css files are also located. We have custom hooks located in the hooks folder.
+The Contexts folder includes a context for authentication that is passed through app.js to all components. And of course we have services that facilitate sending requests to the server.
+
+<img src="https://github.com/VAPY05/Steretype-Streaming/blob/main/assets/front%20end.png">
+
+Back-End:
+  The architecture of the server is standart MVC pattern consisting of three parts: Model, View, Controller. Model: Handles data logic. View: It displays the information from the model to the user. Controller: It controls the data flow into a model object and updates the view whenever data changes. There are also services for fetching data easier ,utils for helping with the error handling and middlewares for security purpouses.
+  
+  <img src="https://github.com/VAPY05/Steretype-Streaming/blob/main/assets/back%20end.png">
+
 ## Tech Stack
 
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-flat&logo=html5&logoColor=white)&nbsp;
@@ -26,6 +39,10 @@ Stereotype Streaming is a project that I am creating with passion as Project Def
 ## Installation
 
 Install stereotype-streaming with npm
+
+```bash
+  note that you should have nodejs already installed on your pc.
+```
 
 client:
 ```bash
