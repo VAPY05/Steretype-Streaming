@@ -1,0 +1,70 @@
+@font-face {
+    font-family: Spin-Cycle;
+    src: url(../../../assets/SPINC___.TTF);
+  }
+
+*{
+    margin: 0;
+}
+
+.navbar{
+    width: 100%;
+    height: 50px;
+    background-color: black;
+}
+
+.sidebar{
+    width: 50px;
+    height: 100%;
+    background-color: black;
+    position: fixed;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    padding-top: 60px;
+}
+
+.navbar-container{
+    display: flex;
+    align-items: center;
+    padding: 0 50px;
+    height: 100%;
+    color:white;
+}
+
+.logo-container{
+    margin: 0px 0px -10px;
+    flex: 2;
+}
+
+.logo{
+    font-family: Spin-Cycle;
+}
+
+.menu-container{
+    margin: 0px 0px -10px;
+    flex: 3;
+    
+}
+
+.menu-list{
+    display: flex;
+    list-style: none;   
+    font-size: 20px;
+    margin-right: 200px;
+    font-family: Spin-Cycle;
+}
+
+.left-menu-icon{
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+
+}
+
+.item a{
+    text-decoration: none;
+    color: inherit;
+}

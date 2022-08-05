@@ -1,0 +1,65 @@
+.movie-panel{
+    padding-top: 1%;
+    padding-left: 2%;
+    color: white;
+    display: flex;
+}
+
+.title {
+    padding-left: 40%;
+    
+}
+
+.desc{
+    font-size: 30px;
+    line-height: 5rem;
+    height: 60%;
+    width: 1000px;
+    border: none;
+    background: none;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    resize: none;
+    outline: none;
+}
+
+.title-and-desc{
+    padding-left: 6%;
+}
+
+.play{
+    background-color: purple;
+    color: white;
+    border: none;
+    border-radius: 10px;
+}
+
+.like{
+    background-color: blue;
+    color: white;
+    border: none;
+    border-radius: 10px;
+}
+
+.remove{
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 10px;
+}
+
+.edit{
+    background-color: rgb(255, 225, 0);
+    color: white;
+    border: none;
+    border-radius: 10px;
+}
+
+.buttons button{
+    margin-left: 10px;
+    width: 130px;
+    height: 50px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 30px;
+    cursor: pointer;
+}
