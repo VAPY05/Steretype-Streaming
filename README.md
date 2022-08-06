@@ -1,5 +1,5 @@
 <p align="center">
-<img src="https://github.com/VAPY05/Steretype-Streaming/blob/main/assets/logo-front-end.png">
+<img src="https://github.com/VAPY05/Steretype-Streaming/blob/main/assets/logo-.png">
 </p>
 
 # Stereotype Streaming
