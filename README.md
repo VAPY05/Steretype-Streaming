@@ -21,7 +21,7 @@ The Contexts folder includes a context for authentication that is passed through
 <img src="https://github.com/VAPY05/Steretype-Streaming/blob/main/assets/front%20end.png">
 
 Back-End:
-  The architecture of the server is standart MVC pattern consisting of three parts: Model, View, Controller. Model: Handles data logic. View: It displays the information from the model to the user. Controller: It controls the data flow into a model object and updates the view whenever data changes. There are also services for fetching data easier ,utils for helping with the error handling and middlewares for security purpouses.
+  The architecture of the server is based on Models and Controllers. Models: Handles data logic. Controller: It controls the data flow into a model object and updates the view whenever data changes. Services: It handles data fetching  ,utils for helping with the error handling and middlewares for security purposes.
   
   <img src="https://github.com/VAPY05/Steretype-Streaming/blob/main/assets/back%20end.png">
 
